@@ -1,12 +1,14 @@
 #include "shell.h"
 
 /**
- *handle_signal- it keeps track is interactive mode
+ *trackInteractive- it keeps track is interactive mode
+ *
  *@m: the signal number
+ *
  *Return: nothing
  */
 
-void handle_signal(int m)
+void trackInteractive(int m)
 {
 	(void)m;
 	write(STDERR_FILENO, "\n", 1);

@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
-* find_path - finds the path from the global enviroment
+* findGlobalEnvt - finds the path from the global enviroment
+*
 * Return: NULL if path is not found or path if path is found.
 */
-char *find_path(void)
+char *findGlobalEnvt(void)
 {
 	int x;
 	char **env = environ, *path = NULL;

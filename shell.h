@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -12,34 +12,30 @@
 #include <time.h>
 #include <stdbool.h>
 
-/* environment variables */
 extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
-/* handle built ins */
-int checker(char **cmd, char *buf);
-void prompt_user(void);
-void handle_signal(int m);
-char **tokenizer(char *line);
-char *test_path(char **path, char *command);
-char *append_path(char *path, char *command);
-int handle_builtin(char **command, char *line);
-void exit_cmd(char **command, char *line);
+int builtinChecker(char **cmd, char *buf);
+void inputAfter$(void);
+void trackInteractive(int m);
+char **tokenCreator(char *line);
+char *validPathChecker(char **path, char *command);
+char *pathAdder(char *path, char *command);
+int builtInExecution(char **command, char *line);
+void exitHandler(char **command, char *line);
 
-void print_env(void);
+void envTostdout(void);
 
-/* string handlers */
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 int _strncmp(char *s1, char *s2, int n);
 char *_strdup(char *s);
 char *_strchr(char *s, char c);
 
-void execution(char *cp, char **cmd);
-char *find_path(void);
+void usrCmdExecuter(char *cp, char **cmd);
+char *findGlobalEnvt(void);
 
-/* helper function for efficient free */
-void free_buffers(char **buf);
+void freeBuffers(char **buf);
 
 struct builtin
 {
@@ -58,4 +54,4 @@ struct flags
 	bool interactive;
 } flags;
 
-#endif /* SHELL_H */
+#endif
