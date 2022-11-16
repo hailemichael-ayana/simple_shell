@@ -1,12 +1,5 @@
 #include "shell.h"
 
-/**
- * hsh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
- *
- * Return: 0 on success, 1 on error, or error code
- */
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
@@ -43,15 +36,7 @@ int hsh(info_t *info, char **av)
 	return (builtin_ret);
 }
 
-/**
- * find_builtin - finds a builtin command
- * @info: the parameter & return info struct
- *
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
- */
+
 int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
@@ -119,12 +104,6 @@ void find_cmd(info_t *info)
 	}
 }
 
-/**
- * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
- *
- * Return: void
- */
 void fork_cmd(info_t *info)
 {
 	pid_t child_pid;
@@ -132,7 +111,6 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -145,7 +123,6 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
